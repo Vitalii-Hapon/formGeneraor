@@ -1,0 +1,75 @@
+git<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form Generator</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="scrypt.js"></script>
+
+</head>
+<body>
+<div class="content">
+    <fieldset class="form_types">
+        <label class="radio-check">
+            <input class="input-btn" type="radio" name="type" value="Button">
+            <span class="icon-btn"></span>
+            <span class="span-btn">Button</span>
+        </label>
+        <label class="radio-check">
+            <input class="input-btn" type="radio" name="type" value="Input">
+            <span class="icon-btn"></span>
+            <span class="span-btn">Input</span>
+        </label>
+        <label class="radio-check">
+            <input class="input-btn" type="radio" name="type" value="Textarea">
+            <span class="icon-btn"></span>
+            <span class="span-btn">Textarea</span>
+        </label>
+        <label class="radio-check">
+            <input class="input-btn" type="radio" name="type" value="Radio">
+            <span class="icon-btn"></span>
+            <span class="span-btn">Radio</span>
+        </label>
+        <label class="radio-check">
+            <input class="input-btn" type="radio" name="type" value="Checkbox">
+            <span class="icon-btn"></span>
+            <span class="span-btn">Checkbox</span>
+        </label>
+
+    </fieldset>
+
+    <div class="inputs">
+        <fieldset class="inputs_names">
+
+            <label class="value names_label ForButton ForInput ForRadio ForCheckbox">
+                <span class="names_span">Value</span>
+                <input class="names_input value_text" type="text" required placeholder="enter the text">
+            </label>
+
+            <label class="name names_label ForRadio ForCheckbox">
+                <span class="names_span">Name</span>
+                <input class="names_input name_text" type="text" required placeholder="enter the text">
+            </label>
+
+            <label class="placeholder names_label ForInput ForTextarea">
+                <span class="names_span">Placeholder</span>
+                <input class="names_input placeholder_text" type="text" required placeholder="enter the text">
+            </label>
+
+        </fieldset>
+
+        <button class="generate">
+            Generate
+        </button>
+    </div>
+
+    <div class="HTMLarea">
+        <textarea name="HTMLcode" id="html" cols="100" rows="21"></textarea>
+    </div>
+</div>
+</body>
+</html>
