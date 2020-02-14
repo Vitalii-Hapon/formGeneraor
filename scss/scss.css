@@ -1,0 +1,88 @@
+body {
+  background-color: burlywood; }
+
+.content {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  width: 1400px; }
+
+.radio-check_span {
+  margin-left: 10px; }
+
+.radio-checks_folder {
+  height: 330px;
+  width: 200px;
+  margin: 0;
+  padding: 0 0 0 15px;
+  background-color: aliceblue;
+  box-sizing: border-box; }
+
+.radio-check {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 180px; }
+  .radio-check:first-child {
+    margin-top: 10px; }
+
+.inputs_names {
+  height: 330px;
+  margin: 0;
+  padding: 0;
+  background-color: beige;
+  display: flex; }
+
+.inputs_folder {
+  width: 280px; }
+
+.radio-check, .names_label {
+  line-height: 60px;
+  font-size: 30px; }
+
+.names_label {
+  text-align: center;
+  display: none;
+  flex-direction: column; }
+
+.names_input {
+  line-height: 40px;
+  font-size: 20px;
+  width: 270px; }
+
+.generate {
+  height: 45px;
+  width: 100%;
+  font-size: 22px; }
+
+.HTMLarea {
+  height: 330px; }
+
+.radio-check_input-btn {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  left: 0;
+  top: 0; }
+
+.radio-check_icon-btn {
+  width: 20px;
+  height: 20px;
+  border: 3px solid darkcyan;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%; }
+  .radio-check_icon-btn:before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: darkcyan;
+    display: none; }
+
+.radio-check_input-btn:checked + .radio-check_icon-btn:before {
+  display: block; }
+
+/*# sourceMappingURL=scss.css.map */
