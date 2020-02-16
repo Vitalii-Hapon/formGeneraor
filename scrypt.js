@@ -23,24 +23,28 @@ $(document).ready(function () {
                 break;
             case 'Checkbox':
                 $('.value, .name').show();
+
                 break;
+            default: $(".names_label").hide();
         }
 
     });
 
     function generate_code() {
 
-        const input_type = $("input:radio:checked").val();
-        const class_name = $('.class_text').val();
-        const value = $('.value_text').val();
-        const name = $('.name_text').val();
-        const placeholder = $('.placeholder_text').val();
+        let input_type = $("input:radio:checked").val();
+        let class_name = $('.class_text').val();
+        let value = $('.value_text').val() === '' ? 'value' : $('.value_text').val() ;
+        let name = $('.name_text').val();
+        let placeholder = $('.placeholder_text').val();
 
-        const button = `<form><button class="${class_name}">${name}</button></form>`;
-        const input = `<form><label class="${class_name}">${name}<input class="${class_name}_input" type="text" placeholder="${placeholder}"></label></form>`;
-        const textarea = `<form><textarea name="${class_name}" id="${class_name}_textarea" cols=100" rows="100" placeholder="${placeholder}"></textarea></form>`;
-        const radio = `<form><label class="${class_name}"><input class="${class_name}_radio" type="radio" name="${name}">${value}</label></form>`;
-        const checkbox = `<form><label class="${class_name}"><input class="${class_name}_checkbox" type="checkbox" name="${name}">${value}</label></form>`;
+        let button = `<form>`+
+            `<button class="${class_name}">${name}</button>`+
+            `</form>`;
+        let input = `<form><label class="${class_name}">${name}<input class="${class_name}_input" type="text" placeholder="${placeholder}"></label></form>`;
+        let textarea = `<form><textarea name="${class_name}" id="${class_name}_textarea" cols=100" rows="100" placeholder="${placeholder}"></textarea></form>`;
+        let radio = `<form><label class="${class_name}"><input class="${class_name}_radio" type="radio" name="${name}">${value}</label></form>`;
+        let checkbox = `<form><label class="${class_name}"><input class="${class_name}_checkbox" type="checkbox" name="${name}">${value}</label></form>`;
 
         switch (input_type) {
             case 'Button':
@@ -62,7 +66,5 @@ $(document).ready(function () {
     }
 
     $('.generate').click(generate_code);
-    $(document).keydown (function(e){
-            if(e.keycode == 13) {console.log(1)}
-        });
+
 });
