@@ -1,5 +1,6 @@
 body {
   background-color: rgba(235, 235, 235, 1);
+  font-family: 'Roboto', sans-serif;
 }
 
 .content {
@@ -46,6 +47,14 @@ body {
 
 .radio-check_span {
   margin-left: 10px;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    text-decoration: underline ;
+  }
+  &:active {
+    opacity: 0.2;
+  }
 }
 
 .inputs_names {
@@ -61,22 +70,40 @@ body {
   flex-direction: column;
 }
 
-.radio-check, .names_label {
+.radio-check {
   line-height: 60px;
-  font-size: 30px;
+  font-size: 24px;
 }
 
 .names_label {
+  line-height: 50px;
+  font-size: 20px;
   text-align: center;
   display: none;
   flex-direction: column;
+  padding: 0 15px 0 15px;
 }
 
 .names_input {
-  line-height: 40px;
-  font-size: 20px;
-  width: 270px;
+  line-height: 25px;
+  font-size: 18px;
+  width: 220px;
   cursor: pointer;
+  padding-left: 15px;
+  background-color: inherit;
+  border: none;
+  border-bottom: 1px solid;
+  outline: none;
+  transition: 0.2s ease-in-out;
+    &:hover {
+      border-bottom: 2px solid;
+
+    }
+
+    &:active, &:focus {
+      line-height: 40px;
+      font-size: 21px;
+  }
 }
 
 .results {
@@ -87,16 +114,36 @@ body {
   border-radius: 10px;
 
 }
+.button_folders {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .button {
+  opacity: 0.4;
   height: 45px;
   width: 200px;
-  font-size: 22px;
+  font-size: 18px;
   margin-top: 35px;
   cursor: pointer;
   border-radius: 5px;
+  border: 1px solid;
   align-self: center;
+  text-transform: uppercase;
+  outline: none;
+  transition: 0.2s ease-in-out;
 
+  &:hover {
+    opacity: 1;
+    font-size: 20px;
+    background-color: #F5F5F5;
+
+  }
+  &:active {
+    opacity: 0.6;
+
+  }
   &:first-of-type {
     margin-top: 45px;
   }

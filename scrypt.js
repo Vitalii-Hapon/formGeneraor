@@ -23,7 +23,6 @@ $(document).ready(function () {
                 break;
             case 'Checkbox':
                 $('.value, .name').show();
-
                 break;
             default: $(".names_label").hide();
         }
@@ -62,6 +61,7 @@ $(document).ready(function () {
             case 'Checkbox':
                 $('#html').val(checkbox);
                 break;
+            default: $('#html').val('');
         }
     }
 
