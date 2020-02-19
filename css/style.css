@@ -41,7 +41,7 @@ body {
   transition: 0.3s ease-in-out; }
   .radio-check_span:hover {
     text-decoration: underline; }
-  .radio-check_span:active {
+  .radio-check_span:focus {
     opacity: 0.2; }
 
 .inputs_names {
@@ -114,8 +114,9 @@ body {
     opacity: 1;
     font-size: 20px;
     background-color: #F5F5F5; }
-  .button:active {
-    opacity: 0.6; }
+  .button:active, .button:focus {
+    opacity: 0.6;
+    border: 2px solid; }
   .button:first-of-type {
     margin-top: 45px; }
 

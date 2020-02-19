@@ -16,7 +16,7 @@ $(document).ready(function () {
                 $('.name, .placeholder').show();
                 break;
             case 'Textarea':
-                $('.placeholder').show();
+                $('.name, .placeholder').show();
                 break;
             case 'Radio':
                 $('.value, .name').show();
@@ -29,23 +29,29 @@ $(document).ready(function () {
 
     });
 
-    function generate_code() {
+    function getNameValue(className) {
+        if ($(`.${className}_text`).val() === '') {
+            return (`${className}`);
+        } else {
+            return ($(`.${className}_text`).val());
+        }
+    }
 
-        let input_type = $("input:radio:checked").val();
-        let class_name = $('.class_text').val();
-        let value = $('.value_text').val() === '' ? 'value' : $('.value_text').val() ;
-        let name = $('.name_text').val();
-        let placeholder = $('.placeholder_text').val();
+    function generateCode() {
 
-        let button = `<form>`+
-            `<button class="${class_name}">${name}</button>`+
-            `</form>`;
-        let input = `<form><label class="${class_name}">${name}<input class="${class_name}_input" type="text" placeholder="${placeholder}"></label></form>`;
-        let textarea = `<form><textarea name="${class_name}" id="${class_name}_textarea" cols=100" rows="100" placeholder="${placeholder}"></textarea></form>`;
-        let radio = `<form><label class="${class_name}"><input class="${class_name}_radio" type="radio" name="${name}">${value}</label></form>`;
-        let checkbox = `<form><label class="${class_name}"><input class="${class_name}_checkbox" type="checkbox" name="${name}">${value}</label></form>`;
+        let inputType = $("input:radio:checked").val();
+        let classText = getNameValue('class');
+        let valueText = getNameValue('value');
+        let nameText = getNameValue('name');
+        let placeholderText = getNameValue('placeholder');
 
-        switch (input_type) {
+        let button = `<button class="${classText}_button">${nameText}</button>`;
+        let input = `<form><label class="${classText}_label">${nameText}<input class="${classText}_input" type="text" placeholder="${placeholderText}"></label></form>`;
+        let textarea = `<form><textarea name="${nameText}" id="${classText}" cols=100" rows="100" placeholder="${placeholderText}"></textarea></form>`;
+        let radio = `<form><label class="${classText}_label"><input class="${classText}_radio" type="radio" name="${nameText}">${valueText}</label></form>`;
+        let checkbox = `<form><label class="${classText}_label"><input class="${classText}_checkbox" type="checkbox" name="${nameText}">${valueText}</label></form>`;
+
+        switch (inputType) {
             case 'Button':
                 $('#html').val(button);
                 break;
@@ -65,6 +71,5 @@ $(document).ready(function () {
         }
     }
 
-    $('.generate').click(generate_code);
-
+    $('.generate').click(generateCode);
 });
