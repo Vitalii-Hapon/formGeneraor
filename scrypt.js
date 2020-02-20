@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     $(".names_label").hide();
+    $('.results_code').hide();
 
     /** Click on label */
     $('.radio-check').click(function () {
@@ -78,7 +79,8 @@ $(document).ready(function () {
     // }
 
     $('.add').click(function () {
-        $('.results').append(button);
+        $('.results_code').show();
+        // $('.results').append(button);
     });
 
     // $('.remove').click(function () {
