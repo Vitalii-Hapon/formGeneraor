@@ -187,4 +187,8 @@ body {
   display: block;
 }
 
+.radio-check_input-btn:checked + .radio-check_span:focus {
+  opacity: 0.6;
+}
+
 

@@ -1,14 +1,18 @@
 $(document).ready(function () {
+
     $(".names_label").hide();
 
     /** Click on label */
-    $(".radio-check").click(function () {
-        $(".names_label").hide();
-        $(".class").show();
-        $(".names_input").val(``);
+    $('.radio-check').click(function () {
+        $('.names_label').hide();
+        $('.class').show();
+        $('.names_input').val(``);
         $('#html').val(``);
+        showInputs();
+    });
 
-        switch ($(this).children('span').text()) {
+    function showInputs() {
+        switch ($(".radio-check_input-btn:checked").val()) {
             case 'Button':
                 $('.name').show();
                 break;
@@ -24,10 +28,10 @@ $(document).ready(function () {
             case 'Checkbox':
                 $('.value, .name').show();
                 break;
-            default: $(".names_label").hide();
+            default:
+                $(".names_label").hide();
         }
-
-    });
+    }
 
     function getNameValue(className) {
         if ($(`.${className}_text`).val() === '') {
@@ -37,39 +41,55 @@ $(document).ready(function () {
         }
     }
 
-    function generateCode() {
+    let classText = getNameValue('class');
+    let valueText = getNameValue('value');
+    let nameText = getNameValue('name');
+    let placeholderText = getNameValue('placeholder');
 
-        let inputType = $("input:radio:checked").val();
-        let classText = getNameValue('class');
-        let valueText = getNameValue('value');
-        let nameText = getNameValue('name');
-        let placeholderText = getNameValue('placeholder');
+    let button = `<button class="${classText}_button">${nameText}</button>`;
+    let input = `<label class="${classText}_label">${nameText}<input class="${classText}_input" type="text" placeholder="${placeholderText}"></label>`;
+    let textarea = `<textarea name="${nameText}" id="${classText}" cols=100" rows="100" placeholder="${placeholderText}"></textarea>`;
+    let radio = `<label class="${classText}_label"><input class="${classText}_radio" type="radio" name="${nameText}">${valueText}</label>`;
+    let checkbox = `<label class="${classText}_label"><input class="${classText}_checkbox" type="checkbox" name="${nameText}">${valueText}</label>`;
 
-        let button = `<button class="${classText}_button">${nameText}</button>`;
-        let input = `<form><label class="${classText}_label">${nameText}<input class="${classText}_input" type="text" placeholder="${placeholderText}"></label></form>`;
-        let textarea = `<form><textarea name="${nameText}" id="${classText}" cols=100" rows="100" placeholder="${placeholderText}"></textarea></form>`;
-        let radio = `<form><label class="${classText}_label"><input class="${classText}_radio" type="radio" name="${nameText}">${valueText}</label></form>`;
-        let checkbox = `<form><label class="${classText}_label"><input class="${classText}_checkbox" type="checkbox" name="${nameText}">${valueText}</label></form>`;
+    // function generateCode() {
+    //
+    //     let inputType = $("input:radio:checked").val();
+    //
+    //     switch (inputType) {
+    //         case 'Button':
+    //             $('#html').val(button);
+    //             break;
+    //         case 'Input':
+    //             $('#html').val(input);
+    //             break;
+    //         case 'Textarea':
+    //             $('#html').val(textarea);
+    //             break;
+    //         case 'Radio':
+    //             $('#html').val(radio);
+    //             break;
+    //         case 'Checkbox':
+    //             $('#html').val(checkbox);
+    //             break;
+    //         default:
+    //             $('#html').val('');
+    //     }
+    // }
 
-        switch (inputType) {
-            case 'Button':
-                $('#html').val(button);
-                break;
-            case 'Input':
-                $('#html').val(input);
-                break;
-            case 'Textarea':
-                $('#html').val(textarea);
-                break;
-            case 'Radio':
-                $('#html').val(radio);
-                break;
-            case 'Checkbox':
-                $('#html').val(checkbox);
-                break;
-            default: $('#html').val('');
-        }
-    }
+    $('.add').click(function () {
+        $('.results').append(button);
+    });
 
-    $('.generate').click(generateCode);
+    // $('.remove').click(function () {
+    //     $('.results').remove();
+    // });
+
+    $('.generate').click(function () {
+        let result = $('.results').html();
+        $('#html').val(result);
+    });
+
 });
+
+

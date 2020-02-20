@@ -151,4 +151,7 @@ body {
 .radio-check_input-btn:checked + .radio-check_icon-btn:before {
   display: block; }
 
+.radio-check_input-btn:checked + .radio-check_span:focus {
+  opacity: 0.6; }
+
 /*# sourceMappingURL=style.css.map */
