@@ -39,7 +39,7 @@ $(document).ready(function () {
     let classText, valueText, nameText, placeholderText, button, input, textarea, radio, checkbox;
 
     function getName() {
-        function getNameValue(className) {
+        function checkNameValue(className) {
             if ($(`.${className}_text`).val() === '') {
                 return (`${className}`);
             } else {
@@ -47,10 +47,10 @@ $(document).ready(function () {
             }
         }
 
-        classText = getNameValue('class');
-        valueText = getNameValue('value');
-        nameText = getNameValue('name');
-        placeholderText = getNameValue('placeholder');
+        classText = checkNameValue('class');
+        valueText = checkNameValue('value');
+        nameText = checkNameValue('name');
+        placeholderText = checkNameValue('placeholder');
 
         button = `<button class="${classText}_button">${nameText}</button>`;
         input = `<label class="${classText}_label">${nameText}<input class="${classText}_input" type="text" placeholder="${placeholderText}"></label>`;
