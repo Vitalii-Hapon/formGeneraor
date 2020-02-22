@@ -154,4 +154,8 @@ body {
 .radio-check_input-btn:checked + .radio-check_span:focus {
   opacity: 0.6; }
 
+.form {
+  display: flex;
+  flex-direction: column; }
+
 /*# sourceMappingURL=style.css.map */

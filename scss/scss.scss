@@ -191,4 +191,7 @@ body {
   opacity: 0.6;
 }
 
-
+.form {
+  display: flex;
+  flex-direction: column;
+}

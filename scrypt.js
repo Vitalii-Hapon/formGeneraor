@@ -53,10 +53,15 @@ $(document).ready(function () {
         placeholderText = checkNameValue('placeholder');
 
         button = `<button class="${classText}_button">${nameText}</button>`;
-        input = `<label class="${classText}_label">${nameText}<input class="${classText}_input" type="text" placeholder="${placeholderText}"></label>`;
-        textarea = `<textarea name="${nameText}" id="${classText}" cols=3" rows="3" placeholder="${placeholderText}"></textarea>`;
-        radio = `<label class="${classText}_label"><input class="${classText}_radio" type="radio" name="${nameText}">${valueText}</label>`;
-        checkbox = `<label class="${classText}_label"><input class="${classText}_checkbox" type="checkbox" name="${nameText}">${valueText}</label>`;
+        input = `<label class="${classText}_label">` +
+            `${nameText}<input class="${classText}_input" type="text" placeholder="${placeholderText}">` +
+            `</label>`;
+        textarea = `<textarea name="${nameText}" id="${classText}" cols=3" rows="3" placeholder="${placeholderText}">` +
+            `</textarea>`;
+        radio = `<label class="${classText}_label">` +
+            `<input class="${classText}_radio" type="radio" name="${nameText}">${valueText}</label>`;
+        checkbox = `<label class="${classText}_label">` +
+            `<input class="${classText}_checkbox" type="checkbox" name="${nameText}">${valueText}</label>`;
     }
 
     function addInput() {
@@ -102,8 +107,8 @@ $(document).ready(function () {
         clearInputsFopdrs();
         $('.results').html(``);
         $('#html').val(``);
-        $(".radio-check_input-btn:checked + .radio-check_icon-btn:before").css( "display", "none" )
-        });
+        $(".radio-check_input-btn:checked + .radio-check_icon-btn:before").css("display", "none")
+    });
 
 });
 
