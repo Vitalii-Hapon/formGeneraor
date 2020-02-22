@@ -109,7 +109,8 @@ body {
   align-self: center;
   text-transform: uppercase;
   outline: none;
-  transition: 0.2s ease-in-out; }
+  transition: 0.2s ease-in-out;
+  box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.75); }
   .button:hover {
     opacity: 1;
     font-size: 20px;
@@ -117,6 +118,8 @@ body {
   .button:active, .button:focus {
     opacity: 0.6;
     border: 2px solid; }
+  .button:active {
+    box-shadow: none; }
   .button:first-of-type {
     margin-top: 45px; }
 
@@ -151,7 +154,7 @@ body {
 .radio-check_input-btn:checked + .radio-check_icon-btn:before {
   display: block; }
 
-.radio-check_input-btn:checked + .radio-check_span:focus {
+.radio-check_input-btn:checked ~ .radio-check_span {
   opacity: 0.6; }
 
 .form {

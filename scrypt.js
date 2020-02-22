@@ -92,6 +92,7 @@ $(document).ready(function () {
     $('.add').click(function () {
         getName();
         addInput()
+        console.log(`1`)
     });
 
     $('.remove').click(function () {
@@ -105,9 +106,9 @@ $(document).ready(function () {
 
     $('.reset').click(function () {
         clearInputsFopdrs();
-        $('.results').html(``);
+        $('.form').html(``);
         $('#html').val(``);
-        $(".radio-check_input-btn:checked + .radio-check_icon-btn:before").css("display", "none")
+
     });
 
 });
