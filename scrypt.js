@@ -37,8 +37,7 @@ $(document).ready(function () {
     }
 
     let classText, valueText, nameText, placeholderText, button, input, textarea, radio, checkbox;
-    const buttonRemove = `<button class="remove button">-</button>`;
-        // + `<br class="end">`;
+    const buttonRemove = `<button class="remove button end">-</button>`+`<br class="end">`;
 
     function getName() {
         function checkNameValue(className) {
@@ -70,25 +69,25 @@ $(document).ready(function () {
     function addInput() {
 
         let inputType = $("input:radio:checked").val();
-
+        let resultFolder = `#results`;
         switch (inputType) {
             case 'Button':
-                $('#results').append(button);
+                $(resultFolder).append(button);
                 break;
             case 'Input':
-                $('#results').append(input);
+                $(resultFolder).append(input);
                 break;
             case 'Textarea':
-                $('#results').append(textarea);
+                $(resultFolder).append(textarea);
                 break;
             case 'Radio':
-                $('#results').append(radio);
+                $(resultFolder).append(radio);
                 break;
             case 'Checkbox':
-                $('#results').append(checkbox);
+                $(resultFolder).append(checkbox);
                 break;
             default:
-                $('#results').append(``);
+                $(resultFolder).append(``);
         }
     }
 
@@ -98,8 +97,14 @@ $(document).ready(function () {
     });
 
     $('.generate').click(function () {
-        let result = `<form class="form">` + $('.results').html() + `</form>`;
-        $('#html').val(result);
+        $('.results').clone().appendTo(".clone");
+        $(document).find(".clone .end").remove();
+        let resultCode = $('.clone .results').html();
+        let resultForm = '<form class="form">' + resultCode + ' </form>';
+        $('#html').val(resultForm);
+        $(`.clone .results`).remove();
+
+
     });
 
     $('.reset').click(function () {
@@ -107,9 +112,6 @@ $(document).ready(function () {
         $('.results').html(``);
         $('#html').val(``);
         $("input:radio").prop('checked',false);
-        // // $("input:radio").removeAttr("checked");
-        // console.log($("input:radio")).val(``);
-        // $('input[name=Choose]').attr('checked',false);
     });
 
     $(document).on("click", ".remove" , function() {
