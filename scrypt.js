@@ -7,13 +7,6 @@ $(document).ready(function () {
         $('.names_input').val(``);
     }
 
-    /** Click on label */
-    $('.radio-check').click(function () {
-        clearInputsFopdrs();
-        $('.class').show();
-        showInputs();
-    });
-
     function showInputs() {
         switch ($("input:radio:checked").val()) {
             case 'Button':
@@ -36,86 +29,112 @@ $(document).ready(function () {
         }
     }
 
-    let classText, valueText, nameText, placeholderText, button, input, textarea, radio, checkbox;
-    const buttonRemove = `<button class="remove button end">-</button>`+`<br class="end">`;
+    /** Click on label */
+    $('.radio-check').click(function () {
+        clearInputsFopdrs();
+        $('.class').show();
+        showInputs();
+    });
 
-    function getName() {
+    let classText, valueText, nameText, placeholderText, button, input, textarea, radio, checkbox, inputType;
+    const buttonRemove = `<button class="remove button end">-</button>` + `<br class="end">`;
+
+    function getInputsName() {
         function checkNameValue(className) {
-            if ($(`.${className}_text`).val() === '') {
-                return (`${className}`);
-            } else {
-                return ($(`.${className}_text`).val());
-            }
+            return ($(`.${className}_text`).val());
         }
 
         classText = checkNameValue('class');
         valueText = checkNameValue('value');
         nameText = checkNameValue('name');
         placeholderText = checkNameValue('placeholder');
+    }
 
-        button = `<button class="${classText}_button">${nameText}</button>` + buttonRemove;
+    function getInputTypeValue() {
+        inputType = $("input:radio:checked").val();
+    }
+
+    function getInputForAdd() {
+        getInputsName();
+
+        button = `<button class="${classText}_button">${nameText}</button>`
+            + buttonRemove;
+
         input = `<label class="${classText}_label">` +
             `${nameText}<input class="${classText}_input" type="text" placeholder="${placeholderText}">` +
-            `</label>` + buttonRemove;
+            `</label>`
+            + buttonRemove;
+
         textarea = `<label class="${classText}_label">` +
             `<textarea name="${nameText}" id="${classText}" cols=20" rows="1" placeholder="${placeholderText}">` +
-            `</textarea></label>` + buttonRemove;
+            `</textarea></label>`
+            + buttonRemove;
+
         radio = `<label class="${classText}_label">` +
-            `<input class="${classText}_radio" type="radio" name="${nameText}">${valueText}</label>` + buttonRemove;
+            `<input class="${classText}_radio" type="radio" name="${nameText}">${valueText}</label>`
+            + buttonRemove;
+
         checkbox = `<label class="${classText}_label">` +
-            `<input class="${classText}_checkbox" type="checkbox" name="${nameText}">${valueText}</label>` + buttonRemove;
+            `<input class="${classText}_checkbox" type="checkbox" name="${nameText}">${valueText}</label>`
+            + buttonRemove;
     }
 
     function addInput() {
-
-        let inputType = $("input:radio:checked").val();
+        getInputsName();
+        getInputTypeValue();
         let resultFolder = `#results`;
+
         switch (inputType) {
             case 'Button':
-                $(resultFolder).append(button);
+                nameText !== '' && classText !== '' ? $(resultFolder).append(button) : alert ('Заполните все поля');
+                // nameText === '' && classText === '' ? alert ('Заполните все поля') : $(resultFolder).append(button);
                 break;
             case 'Input':
-                $(resultFolder).append(input);
+                nameText !== '' && placeholderText !== '' && classText !== '' ? $(resultFolder).append(input)
+                    : alert ('Заполните все поля');
                 break;
             case 'Textarea':
-                $(resultFolder).append(textarea);
+                nameText !== '' && placeholderText !== '' && classText !== '' ? $(resultFolder).append(textarea)
+                    : alert ('Заполните все поля');
                 break;
             case 'Radio':
-                $(resultFolder).append(radio);
+                nameText !== '' && valueText !== '' && classText !== '' ? $(resultFolder).append(radio)
+                    : alert ('Заполните все поля');
                 break;
             case 'Checkbox':
-                $(resultFolder).append(checkbox);
+                nameText !== '' && valueText !== '' && classText !== '' ? $(resultFolder).append(checkbox)
+                    : alert ('Заполните все поля');
                 break;
             default:
-                $(resultFolder).append(``);
+                alert ('Заполните все поля');
         }
     }
 
     $('.add').click(function () {
-        getName();
-        addInput()
+        getInputForAdd();
+        addInput();
     });
 
     $('.generate').click(function () {
         $('.results').clone().appendTo(".clone");
         $(document).find(".clone .end").remove();
         let resultCode = $('.clone .results').html();
-        let resultForm = '<form class="form">' + resultCode + ' </form>';
+        let resultForm = '<form class="form">' + resultCode + '<button class="submit" type="submit">Submit</button>' +
+            '</form>';
         $('#html').val(resultForm);
         $(`.clone .results`).remove();
-
-
     });
 
     $('.reset').click(function () {
         clearInputsFopdrs();
         $('.results').html(``);
         $('#html').val(``);
-        $("input:radio").prop('checked',false);
+        $("input:radio").prop('checked', false);
     });
 
-    $(document).on("click", ".remove" , function() {
+    $(document).on("click", ".remove", function () {
         $(this).prev().remove();
+        $(this).next().remove();
         $(this).remove();
     });
 });
