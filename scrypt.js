@@ -2,10 +2,13 @@ $(document).ready(function () {
 
     $(".names_label").hide();
 
+
     function clearInputsFopdrs() {
         $(".names_label").hide();
         $('.names_input').val(``);
     }
+
+
 
     function showInputs() {
         switch ($("input:radio:checked").val()) {
@@ -79,31 +82,41 @@ $(document).ready(function () {
             + buttonRemove;
     }
 
+    function removeError() {
+        $('.error').remove();
+    }
+
+    function error() {
+        removeError();
+        $('.names_input:invalid').after('<span class="error">заполните поле</span>');
+    };
+
+
     function addInput() {
+        removeError();
         getInputsName();
         getInputTypeValue();
         let resultFolder = `#results`;
 
         switch (inputType) {
             case 'Button':
-                nameText !== '' && classText !== '' ? $(resultFolder).append(button) : alert ('Заполните все поля');
-                // nameText === '' && classText === '' ? alert ('Заполните все поля') : $(resultFolder).append(button);
+                nameText !== '' && classText !== '' ? $(resultFolder).append(button) : error();
                 break;
             case 'Input':
                 nameText !== '' && placeholderText !== '' && classText !== '' ? $(resultFolder).append(input)
-                    : alert ('Заполните все поля');
+                    : error();
                 break;
             case 'Textarea':
                 nameText !== '' && placeholderText !== '' && classText !== '' ? $(resultFolder).append(textarea)
-                    : alert ('Заполните все поля');
+                    : error();
                 break;
             case 'Radio':
                 nameText !== '' && valueText !== '' && classText !== '' ? $(resultFolder).append(radio)
-                    : alert ('Заполните все поля');
+                    : error();
                 break;
             case 'Checkbox':
                 nameText !== '' && valueText !== '' && classText !== '' ? $(resultFolder).append(checkbox)
-                    : alert ('Заполните все поля');
+                    : error();
                 break;
             default:
                 alert ('Заполните все поля');
@@ -130,6 +143,7 @@ $(document).ready(function () {
         $('.results').html(``);
         $('#html').val(``);
         $("input:radio").prop('checked', false);
+        $('.error').remove();
     });
 
     $(document).on("click", ".remove", function () {

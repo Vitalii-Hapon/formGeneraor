@@ -133,7 +133,7 @@ body {
   text-transform: uppercase;
   outline: none;
   transition: 0.2s ease-in-out;
-  box-shadow: 3px 3px 4px 0px rgba(0,0,0,0.75);
+  box-shadow: 3px 3px 4px 0 rgba(0,0,0,0.75);
 
   &:hover {
     opacity: 1;
@@ -197,8 +197,6 @@ body {
 }
 
 .results {
-  //display: flex;
-  //flex-direction: column;
   padding: 0 15px 0 15px;
   button, input, textarea {
     width: 60%;
@@ -217,3 +215,12 @@ body {
   margin-top: 15px;
 }
 
+.error {
+  color: red;
+  font-style: italic;
+  line-height: 25px;
+}
+
+label .error {
+  display: inline;
+}
