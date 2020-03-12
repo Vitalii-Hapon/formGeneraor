@@ -8,8 +8,6 @@ $(document).ready(function () {
         $('.names_input').val(``);
     }
 
-
-
     function showInputs() {
         switch ($("input:radio:checked").val()) {
             case 'Button':
@@ -35,11 +33,10 @@ $(document).ready(function () {
     /** Click on label */
     $('.radio-check').click(function () {
         clearInputsFopdrs();
-        $('.class').show();
         showInputs();
     });
 
-    let classText, valueText, nameText, placeholderText, button, input, textarea, radio, checkbox, inputType;
+    let valueText, nameText, placeholderText, button, input, textarea, radio, checkbox, inputType;
     const buttonRemove = `<button class="remove button end">-</button>` + `<br class="end">`;
 
     function getInputsName() {
@@ -47,7 +44,6 @@ $(document).ready(function () {
             return ($(`.${className}_text`).val());
         }
 
-        classText = checkNameValue('class');
         valueText = checkNameValue('value');
         nameText = checkNameValue('name');
         placeholderText = checkNameValue('placeholder');
@@ -60,25 +56,23 @@ $(document).ready(function () {
     function getInputForAdd() {
         getInputsName();
 
-        button = `<button class="${classText}_button">${nameText}</button>`
+        button = `<button>${nameText}</button>` + buttonRemove;
+
+        input = `<label>` +
+            `${nameText}<input type="text" placeholder="${placeholderText}">`
             + buttonRemove;
 
-        input = `<label class="${classText}_label">` +
-            `${nameText}<input class="${classText}_input" type="text" placeholder="${placeholderText}">` +
-            `</label>`
-            + buttonRemove;
-
-        textarea = `<label class="${classText}_label">` +
-            `<textarea name="${nameText}" id="${classText}" cols=20" rows="1" placeholder="${placeholderText}">` +
+        textarea = `<label>` +
+            `<textarea name="${nameText}" cols=20" rows="1" placeholder="${placeholderText}">` +
             `</textarea></label>`
             + buttonRemove;
 
-        radio = `<label class="${classText}_label">` +
-            `<input class="${classText}_radio" type="radio" name="${nameText}">${valueText}</label>`
+        radio = `<label>` +
+            `<input type="radio" name="${nameText}">${valueText}</label>`
             + buttonRemove;
 
-        checkbox = `<label class="${classText}_label">` +
-            `<input class="${classText}_checkbox" type="checkbox" name="${nameText}">${valueText}</label>`
+        checkbox = `<label>` +
+            `<input type="checkbox" name="${nameText}">${valueText}</label>`
             + buttonRemove;
     }
 
@@ -96,26 +90,27 @@ $(document).ready(function () {
         removeError();
         getInputsName();
         getInputTypeValue();
+
         let resultFolder = `#results`;
 
         switch (inputType) {
             case 'Button':
-                nameText !== '' && classText !== '' ? $(resultFolder).append(button) : error();
+                nameText !== '' ? $(resultFolder).append(button) : error();
                 break;
             case 'Input':
-                nameText !== '' && placeholderText !== '' && classText !== '' ? $(resultFolder).append(input)
+                nameText !== '' && placeholderText !== '' ? $(resultFolder).append(input)
                     : error();
                 break;
             case 'Textarea':
-                nameText !== '' && placeholderText !== '' && classText !== '' ? $(resultFolder).append(textarea)
+                nameText !== '' && placeholderText !== '' ? $(resultFolder).append(textarea)
                     : error();
                 break;
             case 'Radio':
-                nameText !== '' && valueText !== '' && classText !== '' ? $(resultFolder).append(radio)
+                nameText !== '' && valueText !== '' ? $(resultFolder).append(radio)
                     : error();
                 break;
             case 'Checkbox':
-                nameText !== '' && valueText !== '' && classText !== '' ? $(resultFolder).append(checkbox)
+                nameText !== '' && valueText !== '' ? $(resultFolder).append(checkbox)
                     : error();
                 break;
             default:
