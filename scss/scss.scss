@@ -9,7 +9,6 @@ body {
   margin: 0 auto;
   padding-top: 30px;
   width: 80vw;
-
 }
 
 .rightSide {
@@ -95,9 +94,9 @@ body {
   border-bottom: 1px solid;
   outline: none;
   transition: 0.2s ease-in-out;
+
     &:hover {
       border-bottom: 2px solid;
-
     }
 
     &:active, &:focus {
@@ -112,8 +111,8 @@ body {
   background-color: #F5F5F5;
   border: 1px solid #14202f;
   border-radius: 10px;
-
 }
+
 .button_folders {
   display: flex;
   flex-direction: column;
@@ -139,8 +138,8 @@ body {
     opacity: 1;
     font-size: 20px;
     background-color: #F5F5F5;
-
   }
+
   &:active, &:focus {
     opacity: 0.6;
     border: 2px solid;

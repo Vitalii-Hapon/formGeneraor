@@ -2,8 +2,7 @@ $(document).ready(function () {
 
     $(".names_label").hide();
 
-
-    function clearInputsFopdrs() {
+    function clearInputsFolders() {
         $(".names_label").hide();
         $('.names_input').val(``);
     }
@@ -30,9 +29,8 @@ $(document).ready(function () {
         }
     }
 
-    /** Click on label */
     $('.radio-check').click(function () {
-        clearInputsFopdrs();
+        clearInputsFolders();
         showInputs();
     });
 
@@ -134,7 +132,7 @@ $(document).ready(function () {
     });
 
     $('.reset').click(function () {
-        clearInputsFopdrs();
+        clearInputsFolders();
         $('.results').html(``);
         $('#html').val(``);
         $("input:radio").prop('checked', false);
